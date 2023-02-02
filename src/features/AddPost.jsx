@@ -2,12 +2,12 @@ import React from 'react';
 
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
-import { postAdd } from './posts/postsSlice';
+import { useNavigate } from 'react-router-dom';
 import { addNewPost } from './posts/postsSlice';
 import { allUsers } from './users/usersSlice';
 const AddPost = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [userId, setUserId] = useState('');
@@ -27,6 +27,7 @@ const AddPost = () => {
         setTitle('');
         setContent('');
         setUserId('');
+        navigate('/');
       }
     } catch (err) {
       console.log('the error please wait ..', err);
